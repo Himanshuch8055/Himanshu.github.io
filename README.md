@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+    <a href="https://himanshuch8055.github.io/" target="_blank">manorsailor.github.io - v1</a>
+</h1>
 
-## Getting Started
+![demo](https://raw.githubusercontent.com/ManorSailor/manorsailor.github.io/main/img/demo.png)
+<p align="center">First version of my portfolio website built from scratch in pure HTML, CSS, & JS, hosted on <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages" target="_blank">Github pages</a></p>
 
-First, run the development server:
+## Table of Contents
++ [About](#about)
++ [Forks](#forking)
++ [FAQ](#faq)
++ [Credits](#creds)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## About <a name="about"></a>
+This is the first iteration of my portfolio website, however, it is more than just a fun side project.
+I created this website to not only showcase my skills & projects but also to finish Harvard's [CS50x](https://cs50.harvard.edu/x/2022/).
+I wanted to create a project that would not only fulfill the course's requirements but would also be helpful to me in the long run.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you like what you see, please consider giving this repository a __star__<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Forks <a name="forking"></a>
+You are free to use this project as your own as long as you keep it open source & give proper credits
+Remember, plagiarism is bad! Don't claim to be the creator if you haven't actually created it!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Thank you!
 
-## Learn More
+## FAQ <a name="faq"></a>
+### Why have you not used frameworks like Jekyll, Bootstrap, React or others?
+* Simply because I wanted to learn more about vanilla CSS, HTML & JS. I intentionally avoided using any or all frameworks to sharpen my skills in these technologies.
 
-To learn more about Next.js, take a look at the following resources:
+## Credits <a name="creds"></a>
+Following list includes the names of all the people & resources which helped in the creation<br>
+Thanks to: 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [@bchiang7](https://github.com/bchiang7) creator of [brittanychiang.com](https://brittanychiang.com/). You may or may not have noticed the resemblance between her & my website, its because her website inspired me to create my own around the same minimalistic style. I simply didn't want to copy & paste her website, but rather take inspiration from her amazing designer skills & color combos. A special thanks to her!
+- [@delvignefred](https://codepen.io/delvignefred) for his aesthetically pleasing [codepen](https://codepen.io/delvignefred/pen/ZEKyjeo)
+- [SVGrepo](https://www.svgrepo.com/) & [Devicon](https://devicon.dev/) for all the SVG assets
+- [Matthew lein](https://matthewlein.com/) for his [tool](https://matthewlein.com/tools/ceaser) to create custom easing curves

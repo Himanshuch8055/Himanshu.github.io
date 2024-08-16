@@ -1,0 +1,1101 @@
+/* ========================== Global Styles ========================== */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--lightest-violet);
+  color: var(--blue);
+}
+
+html {
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: hsl(225, 20%, 35%) var(--violet);
+}
+
+html::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--violet);
+}
+
+html::-webkit-scrollbar-thumb {
+  /* Using a border-color here to ensure that the thumb doesn't get submerged when it hits the edges of track. Using the same color as bg color creates an illusion that scoller is stopping right before the edge */
+  border: 3px solid var(--violet); 
+  border-radius: var(--card-radius);
+  background-color: hsl(225, 20%, 35%);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(225, 20%, 45%);
+}
+
+:root {
+  --violet: #170528;
+  --light-violet: #210935;
+  --lightest-violet: #411665;
+  --slate: #8892B0;
+  --light-slate: #A8B2D1;
+  --lightest-slate: #CCD6F6;
+  --white: #FFFFFF;
+  --blue: #64DAFF;
+  
+  --violet-tint: rgba(23, 5, 40, 0.7);
+  --violet-shadow: rgba(10, 3, 18, 0.7);
+  --light-violet-alt: rgb(38, 10, 61);
+  --blue-alt: rgba(100, 218, 255, 0.6);
+  --blue-tint: rgba(100, 218, 255, 0.122);
+  --blue-tint-alt: rgba(100, 218, 255, 0.55);
+
+  --paths-theme: var(--blue-tint) var(--blue);
+  --planets-theme: var(--blue-tint-alt) var(--blue-tint-alt) var(--blue-tint-alt) var(--blue);
+
+  --font-text: 'Work Sans', 'sans-serif';
+  --font-head: 'Poppins', 'sans-serif';
+  --font-title: 'Poppins', 'sans-serif';
+  --font-num: 'Fira Code', 'monospace';
+
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-xxl: 22px;
+  --fs-xxxl: 1.6rem;
+
+  --fs-head: 2.25rem;
+  --fs-name-min: 2.5rem;
+  --fs-name-max: 3.5rem;
+
+  --border-radius: 4px;
+  --card-radius: 6px;
+  --ham-radius: 8px;
+
+  --social-icons-size: 1.5rem;
+  --social-bar-height: 6.25rem;
+
+  --heading-line: 200px;
+
+  /* Mini Solar System  */
+  --mini-sys-size: 400px;
+  --planets-size: 410px;
+
+  --mercury-top: 37px;
+  --venus-top: 49px;
+  --earth-top: 71px;
+
+  --sun-size: 200px;
+  --mercury-size: 25px;
+  --venus-size: 35px;
+  --earth-size: 40px;
+
+  --mercury-orbit-size: 200px;
+  --venus-orbit-size: 270px;
+  --earth-orbit-size: 350px;
+
+  --mercury-rotation-time: 29.33s;
+  --venus-rotation-time: 121.5;
+  --earth-rotation-time: 0.5s;
+
+  --mercury-revolution-time: 44s;
+  --venus-revolution-time: 122s;
+  --earth-revolution-time: 182s;
+
+  /* Skill Cards */
+  --sk-card-size: clamp(100px, 12vw, 125px);
+  --sk-svg-size: clamp(33px, 4vw, 40px);
+  --sk-font-size: clamp(var(--fs-sm), 2vw, var(--fs-md));
+
+  /* Transition */
+  --quick: 200ms;
+  --normal: 250ms;
+  --slow: 300ms;
+
+  /* Bezier Curves for transition-timing-function. Thanks to: https://matthewlein.com/tools/ceaser */
+  --easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  --easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  --easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  --easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --social-icons-size: 21px;
+
+    --mini-sys-size: 100px;
+    --planets-size: 210px;
+
+    --mercury-top: 8px;
+    --venus-top: 19px;
+    --earth-top: 23px;
+
+    --sun-size: 100px;
+    --mercury-size: 20px;
+    --venus-size: 25px;
+    --earth-size: 35px;
+
+    --mercury-orbit-size: 100px;
+    --venus-orbit-size: 150px;
+    --earth-orbit-size: 200px;
+  }
+}
+
+body {
+  color: var(--custom-color, var(--slate));
+  font-family: var(--custom-font, var(--font-text));
+  background-color: var(--violet);
+  line-height: 1.3;
+}
+
+/* ========================== Typography ========================== */
+svg {
+  fill: currentColor;
+  color: var(--blue);
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+  font-family: var(--font-head);
+}
+
+p,
+li,
+a {
+  display: inline-block;
+  color: var(--slate);
+  font-family: var(--font-text);
+}
+
+/* ========================== Utility Classes ========================== */
+.flex {
+  display: flex;
+  align-items: var(--align-flex, center);
+  gap: var(--gap, 1rem);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1250px;
+}
+
+.btn {
+  padding: 0.75em 1em;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: var(--border-radius);
+  font-family: var(--font-text);
+  font-size: var(--fs-custom, var(--fs-sm));
+  transition: background-color var(--normal) var(--easeOutSine);
+}
+
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.hide-nav {
+  transform: translateY(-100%);
+}
+
+.resize-nav {
+  height: 80px !important;
+  box-shadow: 0 0.625rem 1.75rem -0.6rem var(--violet-shadow);
+}
+
+.heading {
+  color: var(--lightest-slate);
+  font-weight: 800;
+  position: relative;
+  font-size: clamp(var(--fs-xxxl), 4vw, var(--fs-head));
+}
+
+.heading::before {
+  content: url(../img/left-line.svg);
+  right: 104%;
+}
+
+.heading::after {
+  content: url(../img/right-line.svg);
+  left: 104%;
+}
+
+.heading::before,
+.heading::after {
+  --gap: 0;
+  display: block;
+  position: absolute;
+  width: var(--heading-line);
+  bottom: 15%;
+  opacity: 0.4;
+}
+
+/* ========================== Navigation Bar ========================== */
+.nav-header {
+  display: grid;
+  align-items: center;
+  background-color: var(--violet-tint);
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  z-index: 10;
+  transition: transform var(--quick) var(--easeOutSine) 0.1s,
+              height var(--quick) var(--easeOutSine);
+  backdrop-filter: blur(6px);
+}
+
+.navbar {
+  z-index: 10;
+  position: relative;
+  justify-content: space-between;
+  margin: 0 clamp(25px, 7.55vw, 50px);
+}
+
+.nav-logo {
+  flex: 0 0 auto;
+}
+
+.nav-logo,
+.nav-logo > a,
+.nav-logo > a > svg {
+  width: 42px;
+  height: 42px;
+}
+
+#logo {
+  fill: none;
+}
+
+#logo:hover {
+  fill: var(--blue-tint);
+}
+
+.ham {
+  display: none;
+}
+
+.nav-box {
+  --gap: 1.5rem;
+}
+
+/* Hover effect doing the underline from left-in (on hover) to right-out (off hover) */
+.nav-list-item {
+  position: relative;
+  font-size: var(--fs-sm);
+  color: var(--lightest-slate);
+  transition: color var(--normal) var(--easeInCubic);
+}
+
+.nav-list-item::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(100% + 0.5px); right: 0; bottom: 0; left: 0.25px;
+  inset: calc(100% + 0.5px) 0 0 0.25px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--blue);
+  border-radius: var(--border-radius);
+  transform: scaleX(0);
+  transform-origin: right;
+  padding-block: 0.75px;
+  transition: transform var(--normal) var(--easeOutSine);
+}
+
+.nav-list-item:hover {
+  color: var(--blue);
+}
+
+.nav-list-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.resume-btn:hover {
+  background-color: var(--blue-tint);
+}
+
+@media screen and (max-width: 768px) {
+  .nav-box {
+    --gap: 2.5rem;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: min(75vw, 400px);
+    /* Fixes the issue of nav-menu notfilling the vertical space completely. It was getting obstructed by the browser's toolbar. Now the nav-box (which contains the nav-menu takes the full horizontal viewport of any given device*/
+    height: 100vh;
+    justify-content: center;
+    border-radius: 10px;
+    transform: translateX(100vw);
+    transition: transform var(--normal) var(--easeInOutSine);
+    background-color: var(--light-violet);
+    overflow: hidden;
+  }
+
+  .nav-box[toggle="true"] {
+    transform: translateX(0vw);
+  }
+
+  .nav-box,
+  .nav-list {
+    flex-direction: column;
+  }
+
+  .resume-btn {
+    --fs-custom: var(--fs-md);
+    padding: 1em 2em;
+  }
+
+  .nav-list-item {
+    position: relative;
+    font-size: var(--fs-lg);
+    transition: color 0.75s ease-out,
+      letter-spacing 300ms ease-out;
+  }
+
+  .nav-list-item:hover {
+    letter-spacing: 0.25rem;
+  }
+
+  .nav-list-item::before,
+  .nav-list-item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% + 1px);
+    width: 0px;
+    height: 1px;
+    background-color: var(--blue);
+    border-radius: var(--border-radius);
+    transition: width 300ms ease-out;
+    transform: none;
+    padding: 0.05rem 0;
+  }
+
+  .nav-list-item::before {
+    right: 100%;
+    margin-right: 0.75rem;
+  }
+
+  .nav-list-item::after {
+    left: 100%;
+    margin-left: 0.5rem;
+    ;
+  }
+
+  .nav-list-item:hover::before,
+  .nav-list-item:hover::after {
+    width: 80px;
+    transform: none;
+    transform-origin: initial;
+  }
+
+  .ham {
+    display: block;
+    width: 42px;
+    height: 42px;
+    z-index: 20;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .ham-lines {
+    width: inherit;
+    height: 2px;
+    top: 50%;
+    position: absolute;
+    border-radius: var(--ham-radius);
+    background-color: var(--blue);
+    padding: 0.08rem;
+  }
+
+  .ham-lines:nth-child(1) {
+    top: 26%;
+  }
+
+  .ham-lines:nth-child(3) {
+    top: 76%;
+  }
+}
+
+/* ========================== Main ========================== */
+main {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
+  min-height: 100vh;
+  padding: 0 150px;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0 25px;
+  }
+}
+
+section {
+  flex-direction: column;
+  justify-content: center;
+  padding: 150px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    padding: 100px 0;
+  }
+}
+
+/* =================== Social Bar =================== */
+.social {
+  z-index: 9;
+  position: fixed;
+  margin-inline: 3rem;
+  bottom: 0; right: 0; left: 0;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.social-list,
+.mail-box {
+  writing-mode: vertical-rl; /* Behaves like: flex-direction: column */
+  --gap: 0.75rem;
+  pointer-events: auto;
+}
+
+.social-list li *,
+.mail-box > a {
+  transition: all var(--normal) var(--easeOutSine);
+}
+
+.social-list::after,
+.mail-box::after {
+  content: '';
+  width: 1.5px;
+  height: var(--social-bar-height);
+  border-radius: 200px;
+  background-color: var(--slate);
+}
+
+.social-items,
+.mail-box > a {
+  padding: 0.5rem 0.75rem;
+}
+
+.social-items > .icons,
+.mail-box > a {
+  color: var(--light-slate);
+}
+
+.social-items > .icons {
+  width: var(--social-icons-size);
+  height: var(--social-icons-size);
+}
+
+.social li:nth-child(2) .icons {
+  margin-top: -3px;
+}
+
+.mail-box > a {
+  margin-left: 1px;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.125rem;
+}
+
+.social-items:hover > .icons path,
+.mail-box > a:hover {
+  color: var(--blue);
+}
+
+.social-items:hover,
+.mail-box > a:hover {
+  transform: translateY(-8px);
+}
+
+@media screen and (max-width: 768px) {
+  .social {
+    display: none;
+  }
+}
+
+/* =================== Home =================== */
+.home {
+  --gap: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+.home::before {
+  display: none;
+}
+
+.home-text {
+  --gap: 0;
+  flex-direction: column;
+  --align-flex: flex-start;
+}
+
+.ht-intro {
+  font-weight: 100;
+  color: var(--blue);
+  font-size: clamp(var(--fs-md), 2vw, var(--fs-xl));
+  font-family: var(--font-text);
+  margin-bottom: 1rem;
+}
+
+.ht-name {
+  font-weight: 600;
+  font-size: clamp(var(--fs-name-min), 8vw, var(--fs-name-max));
+  color: var(--lightest-slate);
+  margin-bottom: -0.4rem;
+}
+
+.ht-desc {
+  margin: 1.5rem 0 1.5rem 0;
+  font-size: clamp(var(--fs-md), 2vw, var(--fs-lg));
+  max-width: 580px;
+}
+
+.ht-btn {
+  position: relative;
+  --fs-custom: clamp(var(--fs-sm), 2vw, var(--fs-md));
+}
+
+.ht-btn,
+.btn-arrow {
+  transition: all var(--normal) var(--easeOutSine);
+}
+
+.btn-arrow {
+  z-index: -1;
+  opacity: 0;
+  width: 40px;
+  height: 16px;
+  position: absolute;
+  left: 100%; top: 35%; bottom: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+
+.ht-btn:hover {
+  background-color: var(--blue-tint);
+}
+
+.ht-btn:hover .btn-arrow {
+  opacity: 1;
+  transform: translateX(10px);
+}
+
+/* ============= Mini Solar System ============= */
+/* Inspired/Kudos by/to: https://codepen.io/delvignefred/pen/ZEKyjeo?editors=1100 */
+.mini-system {
+  --gap: 0;
+  justify-content: center;
+  transform-origin: center;
+  position: relative;
+  transform: skew(-45deg);
+  width: var(--mini-sys-size);
+  height: var(--mini-sys-size);
+}
+
+.mini-system .sun {
+  position: absolute;
+  transform: skew(45deg);
+  width: var(--sun-size);
+  height: var(--sun-size);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue) 20%, var(--blue-tint) 100%);
+  filter: drop-shadow(0 0 2rem var(--blue-alt)) blur(1px);
+}
+
+.planets {
+  --gap: 0;
+  justify-content: center;
+  width: var(--planets-size);
+  height: var(--planets-size);
+  position: relative;
+}
+
+.planets .mercury,
+.planets .venus,
+.planets .earth {
+  --gap: 0;
+  justify-content: center;
+  position: absolute;
+  border: 2px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--planets-theme);
+  background-color: transparent;
+  animation-name: rotation !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+.planets .mercury {
+  top: var(--mercury-top);
+  width: var(--mercury-size);
+  height: var(--mercury-size);
+  animation-duration: var(--mercury-rotation-time) !important;
+}
+
+.planets .venus {
+  top: var(--venus-top);
+  width: var(--venus-size);
+  height: var(--venus-size);
+  animation-duration: var(--venus-rotation-time) !important;
+}
+
+.planets .earth {
+  top: var(--earth-top);
+  width: var(--earth-size);
+  height: var(--earth-size);
+  animation-duration: var(--earth-rotation-time) !important;
+}
+
+.planets .mercury::after,
+.planets .venus::after,
+.planets .earth::after {
+  content: '';
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: var(--blue);
+}
+
+.planets .earth::after {
+  animation-name: blinking-earth !important;
+  animation-duration: 2s !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+.planets .mercury-orbit,
+.planets .venus-orbit,
+.planets .earth-orbit {
+  position: absolute;
+  border: 2px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--paths-theme);
+  animation-name: revolution !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+.planets .mercury-orbit {
+  width: var(--mercury-orbit-size);
+  height: var(--mercury-orbit-size);
+  animation-duration: var(--mercury-revolution-time) !important;
+}
+
+.planets .venus-orbit {
+  width: var(--venus-orbit-size);
+  height: var(--venus-orbit-size);
+  animation-duration: var(--venus-revolution-time) !important;
+}
+
+.planets .earth-orbit {
+  width: var(--earth-orbit-size);
+  height: var(--earth-orbit-size);
+  animation-duration: var(--earth-revolution-time) !important;
+}
+
+@keyframes revolution {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blinking-earth {
+  0% {
+    background-color: var(--blue);
+    filter: drop-shadow(0 0 0.3rem var(--blue-alt)) blur(0.5px);
+  }
+
+  100% {
+    background-color: var(--violet);
+    filter: drop-shadow(0 0 0.3rem var(--blue-alt)) blur(0);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .mini-system {
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-text {
+    padding-top: 15%;
+  }
+
+  .mini-system {
+    order: 0;
+  }
+}
+
+/* =================== About =================== */
+.about {
+  --gap: 3rem;
+}
+
+.about-box {
+  --gap: 2rem;
+  flex-direction: row;
+  justify-content: center;
+  --align-flex: flex-start;
+}
+
+.about-text {
+  --gap: 1rem;
+  flex-direction: column;
+  font-size: clamp(var(--fs-md), 2vw, var(--fs-lg));
+  text-align: center;
+  max-width: 60%;
+}
+
+.about-img {
+  margin-top: 7px; /* Just for satisfying my ocd */
+}
+
+@media screen and (max-width: 768px) {
+  .about-box {
+    flex-direction: column;
+    --align-flex: center;
+  }
+
+  .about-text {
+    max-width: none;
+  }
+}
+
+/* =================== Skills =================== */
+.skills {
+  --gap: 4rem;
+}
+
+.skills-box {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, var(--sk-card-size));
+  width: 100%;
+  max-width: 900px;
+  justify-content: center;
+  padding: 0 1.25rem;
+}
+
+.card {
+  --gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  width: var(--sk-card-size);
+  height: var(--sk-card-size);
+  border-radius: var(--card-radius);
+  transform: translateY(0);
+  transition: transform var(--normal) var(--easeOutSine),
+              box-shadow var(--normal) var(--easeOutSine);
+  user-select: none; /* Makes the card & all of its children unselectable by the user */
+}
+
+.card svg {
+  opacity: 0.5;
+  width: var(--sk-svg-size);
+  height: var(--sk-svg-size);
+  color: var(--slate);
+  transform: translateY(50%);
+}
+
+.card p {
+  opacity: 0;
+  transition-delay: 0.05s;
+  font-size: var(--sk-font-size);
+  transform: translateY(-50%) scaleY(0.5);
+}
+
+.card svg,
+.card svg path,
+.card p {
+  transition-property: transform, opacity, color;
+  transition-duration: var(--normal);
+  transition-timing-function: var(--easeOutSine);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 1);
+}
+
+.card:hover svg,
+.card:hover p {
+  transform: translateY(0) scaleY(1);
+}
+
+.card:hover svg,
+.card:hover svg path,
+.card:hover p {
+  opacity: 1;
+}
+
+.card:hover svg path,
+.card:hover p {
+  color: var(--blue);
+}
+
+/* =================== Work =================== */
+.work {
+  --gap: 4rem;
+}
+
+.work-box {
+  display: grid;
+  max-width: 100%;
+  place-items: center;
+  /* grid-template-columns: 1fr; */
+}
+
+.work-box * {
+  transition: all var(--normal) var(--easeOutSine);
+}
+
+.wb-card {
+  --gap: 0;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 300px;
+  border-radius: var(--card-radius);
+  padding: 2rem 1.75rem;
+  background-color: var(--light-violet);
+  box-shadow: 0 0.1rem 0.3rem 0.15rem var(--violet-shadow);
+}
+
+.wb-card-top {
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.wb-card-top .folder {
+  width: 40px;
+  height: 30px;
+}
+
+.wb-card-links {
+  --gap: 0;
+  z-index: 1;
+}
+
+.repo-link,
+.live-link {
+  padding: 0.5rem 0.5rem;
+}
+
+.repo-link svg,
+.live-link svg {
+  color: var(--slate);
+  width: 20px;
+  height: 20px;
+}
+
+.wb-card-title {
+  font-size: var(--fs-xxl);
+  margin-bottom: 0.75rem;
+}
+
+.wb-card-title > a {
+  color: var(--lightest-slate);
+}
+
+.wb-card-title > a::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-radius);
+  z-index: 0;
+}
+
+.wb-card-desc {
+  font-size: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.wb-card-desc > p {
+  color: var(--light-slate);
+}
+
+.wb-card footer {
+  align-self: flex-start;
+}
+
+.wb-card-techstack {
+  --gap: 0.5rem;
+}
+
+.wb-card-techstack li {
+  font-size: var(--fs-sm);
+  font-family: var(--font-num);
+}
+
+.wb-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 0.2rem 0.6rem 0.3rem var(--violet-shadow);
+}
+
+.repo-link:hover svg path,
+.live-link:hover svg path {
+  color: var(--blue);
+}
+
+.wb-card-title > a:hover {
+  color: var(--blue);
+}
+
+/* =================== Contact =================== */
+.contact {
+  --gap: 2rem;
+}
+
+.contact-head {
+  --gap: 1rem;
+  flex-direction: column;
+}
+
+.contact-head h1 {
+  color: var(--blue);
+  font-size: clamp(var(--fs-xl), 3vw, 24px);
+}
+
+.contact-main {
+  --gap: 3rem;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.contact-main p {
+  font-size: clamp(var(--fs-md), 2vw, var(--fs-lg));
+  text-align: center;
+}
+
+.contact-main a {
+  --fs-custom: var(--fs-md);
+  padding: 1.25em 1.75em;
+  line-height: 1;
+}
+
+.contact-main a:hover {
+  background-color: var(--blue-tint);
+}
+
+/* ========================== Footer ========================== */
+footer {
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.footer-social {
+  display: none;
+}
+
+.author {
+  color: var(--light-slate);
+  font-size: var(--fs-xs);
+  font-family: var(--font-num);
+  padding: 0.6rem 0.6rem;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: color var(--normal) var(--easeOutSine);
+}
+
+.author::after {
+  content: 'Himanshu Chauhan';
+  display: block;
+}
+
+.author:hover {
+  color: var(--blue);
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    --gap: 0.5rem;
+  }
+
+  .footer-social {
+    display: block;
+  }
+
+  .footer-social ul {
+    --gap: 0.25rem;
+  }
+
+  .footer-social-items {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .footer-social-items * {
+    transition: color var(--normal) var(--easeOutSine);
+  }
+
+  .footer-social-items svg {
+    color: var(--light-slate);
+    width: var(--social-icons-size);
+    height: var(--social-icons-size);
+  }
+
+  .footer-social-items:hover svg path {
+    color: var(--blue);
+  }
+
+  .author {
+    padding-top: 0;
+  }
+}

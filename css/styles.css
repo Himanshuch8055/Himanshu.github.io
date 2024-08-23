@@ -431,7 +431,6 @@ a {
     top: 76%;
   }
 }
-
 /* ========================== Main ========================== */
 main {
   width: 100%;
@@ -614,7 +613,7 @@ section {
 
 /* ============= Mini Solar System ============= */
 /* Inspired/Kudos by/to: https://codepen.io/delvignefred/pen/ZEKyjeo?editors=1100 */
-.mini-system {
+/* .mini-system {
   --gap: 0;
   justify-content: center;
   transform-origin: center;
@@ -756,6 +755,177 @@ section {
   100% {
     background-color: var(--violet);
     filter: drop-shadow(0 0 0.3rem var(--blue-alt)) blur(0);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .mini-system {
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-text {
+    padding-top: 15%;
+  }
+
+  .mini-system {
+    order: 0;
+  }
+} */
+
+.mini-system {
+  --gap: 0;
+  justify-content: center;
+  transform-origin: center;
+  position: relative;
+  transform: skew(-45deg);
+  width: var(--mini-sys-size);
+  height: var(--mini-sys-size);
+}
+
+.mini-system .sun {
+  position: absolute;
+  transform: skew(45deg);
+  width: var(--sun-size);
+  height: var(--sun-size);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ffd000 0%, #ff8c00 70%, #ff5f00 100%);
+  filter: drop-shadow(0 0 2rem rgba(255, 140, 0, 0.6)) blur(1px);
+}
+
+.planets {
+  --gap: 0;
+  justify-content: center;
+  width: var(--planets-size);
+  height: var(--planets-size);
+  position: relative;
+}
+
+.planets .mercury,
+.planets .venus,
+.planets .earth {
+  --gap: 0;
+  justify-content: center;
+  position: absolute;
+  border: 2px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.3) rgba(128, 128, 128, 0.8);
+  background-color: transparent;
+  animation-name: rotation !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+.planets .mercury {
+  top: var(--mercury-top);
+  width: var(--mercury-size);
+  height: var(--mercury-size);
+  animation-duration: var(--mercury-rotation-time) !important;
+}
+
+.planets .venus {
+  top: var(--venus-top);
+  width: var(--venus-size);
+  height: var(--venus-size);
+  animation-duration: var(--venus-rotation-time) !important;
+}
+
+.planets .earth {
+  top: var(--earth-top);
+  width: var(--earth-size);
+  height: var(--earth-size);
+  animation-duration: var(--earth-rotation-time) !important;
+}
+
+.planets .mercury::after,
+.planets .venus::after,
+.planets .earth::after {
+  content: '';
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+}
+
+.planets .mercury::after {
+  background: linear-gradient(135deg, #808080 0%, #696969 100%);
+}
+
+.planets .venus::after {
+  background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+}
+
+.planets .earth::after {
+  background: linear-gradient(135deg, #1e90ff 0%, #00bfff 70%, #87ceeb 100%);
+  animation-name: blinking-earth !important;
+  animation-duration: 2s !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+.planets .mercury-orbit,
+.planets .venus-orbit,
+.planets .earth-orbit {
+  position: absolute;
+  border: 2px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgba(128, 128, 128, 0.2) rgba(128, 128, 128, 0.8);
+  animation-name: revolution !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+.planets .mercury-orbit {
+  width: var(--mercury-orbit-size);
+  height: var(--mercury-orbit-size);
+  animation-duration: var(--mercury-revolution-time) !important;
+}
+
+.planets .venus-orbit {
+  width: var(--venus-orbit-size);
+  height: var(--venus-orbit-size);
+  animation-duration: var(--venus-revolution-time) !important;
+}
+
+.planets .earth-orbit {
+  width: var(--earth-orbit-size);
+  height: var(--earth-orbit-size);
+  animation-duration: var(--earth-revolution-time) !important;
+}
+
+@keyframes revolution {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blinking-earth {
+  0% {
+    filter: drop-shadow(0 0 0.3rem rgba(30, 144, 255, 0.6)) blur(0.5px);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 0.3rem rgba(30, 144, 255, 0.6)) blur(0);
   }
 }
 

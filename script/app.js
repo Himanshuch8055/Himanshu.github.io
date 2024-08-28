@@ -82,3 +82,9 @@ ham.addEventListener('click', () => {
         hideNav();
     }
 });
+
+// Add functionality to the theme switch
+const checkbox = document.getElementById("checkbox")
+checkbox.addEventListener("change", () => {
+    document.body.classList.toggle("light")
+})

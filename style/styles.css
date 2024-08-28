@@ -892,7 +892,7 @@ section {
 
 /* ============= Mini Solar System for light theme ============= */
 
-/* .mini-system {
+.mini-system {
   --gap: 0;
   justify-content: center;
   transform-origin: center;
@@ -1061,9 +1061,9 @@ section {
   .mini-system {
     order: 0;
   }
-} */
+}
 
-.mini-system {
+/* .mini-system {
   --gap: 0;
   justify-content: center;
   transform-origin: center;
@@ -1083,7 +1083,6 @@ section {
   height: var(--sun-size);
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #fff9c4 0%, #ffd54f 20%, #ff9800 40%, #ff5722 60%, #e64a19 80%, #bf360c 100%);
-  /* animation: sun-pulsate 4s ease-in-out infinite, sun-rotate 24s linear infinite, sun-glow 8s ease-in-out infinite; */
 }
 
 @keyframes sun-pulsate {
@@ -1236,7 +1235,6 @@ section {
 
 .planets .earth::after {
   background: radial-gradient(circle at 30% 30%, #bbdefb 0%, #42a5f5 40%, #1565c0 80%, #0d47a1 100%);
-  /* animation: earth-glow 4s infinite alternate; */
 }
 
 .planets .mars::after {
@@ -1389,7 +1387,7 @@ section {
     order: 0;
     transform: scale(0.7) skew(-45deg);
   }
-}
+} */
 
 /* =================== Mini Solar System for dark theme =================== */
 /* .mini-system {
